@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Dog api</h1>
+     <input id="typeText" type="text" placeholder="Enter dog name">
+     <button id="btn">Search</button>
+    <img id="image" src="" alt="" height="200px">
+
+    <script>
+        let image = document.querySelector("#image")
+        let inputText = document.querySelector("#typeText")
+        let btn = document.querySelector("#btn")
+      
+
+      btn.addEventListener("click" , ()=>{
+        if(!inputText.value.trim()){
+            alert("Enter a Dog Name")
+            return
+        }
+        fetch(`https://dog.ceo/api/breed/${inputText.value}/images/random`)
+        .then((res)=>res.json())
+        .then((res)=>{
+         image.src = res.message
+        })
+        inputText.value = ""
+      })
+       
+    </script>
+</body>
+</html>
